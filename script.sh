@@ -3,4 +3,4 @@ set -euo pipefail
 
 ls
 
-docker build --pull --rm -f "${PLUGIN_DOCKERFILE}" -t dronepluginnpmpublish:latest "."
+docker build --pull --rm -f "Dockerfile" -t dronepluginnpmpublish:latest "."
