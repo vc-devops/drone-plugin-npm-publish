@@ -1,6 +1,6 @@
 #!/bin/sh
 set -euo pipefail
 
-ls
+ls -al
 
 docker build --pull --rm -f "Dockerfile" -t dronepluginnpmpublish:latest "."
