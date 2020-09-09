@@ -3,4 +3,4 @@ set -euo pipefail
 
 ls -al
 
-docker build -t docker-whale .
+docker build --pull --rm -f "${PLUGIN_DOCKERFILE}" -t dronepluginnpmpublish:latest "."
