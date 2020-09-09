@@ -1,6 +1,7 @@
-#!/bin/sh
-set -euo pipefail
+FROM docker:19.03.8-dind
 
-ls -al
+ENV DOCKER_HOST=unix:///var/run/docker.sock
 
-docker build --pull --rm -f "${PLUGIN_DOCKERFILE}" -t dronepluginnpmpublish:latest "."
+ADD release/linux/amd64/drone-docker /bin/
+
+ENTRYPOINT ["/usr/local/bin/dockerd-entrypoint.sh", "/bin/drone-docker"]
