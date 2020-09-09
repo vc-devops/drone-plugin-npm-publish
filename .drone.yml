@@ -19,7 +19,7 @@ steps:
   - name: build
     image: plugins/docker
     settings:
-      repo: nightfuryest/drone-plugin-secret-to-env
+      repo: nightfuryest/drone-plugin-npm-publish
       tags:
         - latest
         - ${DRONE_COMMIT_BRANCH}
@@ -30,7 +30,7 @@ steps:
       - name: docker
         path: /var/lib/docker
   - name: env
-    image: nightfuryest/drone-plugin-secret-to-env
+    image: nightfuryest/drone-plugin-npm-publish
     settings:
       template: .env.staging.template
       file: .env

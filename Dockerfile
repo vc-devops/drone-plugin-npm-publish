@@ -1,19 +1,11 @@
-FROM node:13-alpine
+FROM docker:19.03.8-dind
+
+ENV DOCKER_HOST=unix:///var/run/docker.sock
 
 ADD script.sh /bin/
 
 RUN chmod +x /bin/script.sh
 
-COPY package*.json yarn*.lock ./
-
-RUN yarn install --production=false --frozen-lockfile 
-
-WORKDIR /app
-
-RUN npm install -g typescript
-
-COPY . .
-
-RUN mkdir -p dist && ls -al dist && yarn build:prod
+RUN docker build --pull --rm -f "${PLUGIN_DOCKERFILE}" -t dronepluginnpmpublish:latest "."
 
 ENTRYPOINT /bin/script.sh
