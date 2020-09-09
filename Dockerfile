@@ -6,6 +6,4 @@ ADD script.sh /bin/
 
 RUN chmod +x /bin/script.sh
 
-RUN docker build --pull --rm -f "${PLUGIN_DOCKERFILE}" -t dronepluginnpmpublish:latest "."
-
 ENTRYPOINT /bin/script.sh
