@@ -29,22 +29,6 @@ steps:
     volumes:
       - name: docker
         path: /var/lib/docker
-  - name: env
-    image: nightfuryest/drone-plugin-npm-publish
-    settings:
-      template: .env.staging.template
-      file: .env
-      envs:
-        - GIT_TOKEN
-        - GIT_DEFAULT_ORGANIZATION
-        - GIT_DEFAULT_BRANCH
-      GIT_TOKEN:
-        from_secret: GIT_TOKEN
-  - name: test
-    image: busybox
-    commands:
-      - ls -al
-      - cat .env
 volumes:
   - name: cache
     host:
